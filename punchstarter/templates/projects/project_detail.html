@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% set active_page = 'projects' %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-sm-12">
+			<h1 class="text-center">{{project.project_name}}</h1>
+			<div class="text-center">
+				by {{project.creator.first_nae}} {{project.creator.last_name}}
+			</div>
+		</div>
+
+		<div class="col-xs-12" style="height:30px;"></div>
+
+		<div class="row">
+			<div class="col-sm-8">
+				<div class="panel">
+					<p class="text-center">{{project.short_description}}</p>
+					<img src="http://placehold.it/680x500" width="680" height="500" />
+				</div>
+
+				<div>
+					<p class="text-center">{{ project.long_description }}</p>
+				</div>
+			</div>
+
+			<div class="col-sm-4">
+				<div class="panel">
+					<span class="project-vitals">{{project.nu}}</span> pledges
+				</div>
+			</div>
+		</div>
+
+	</div>
+{% endblock%}

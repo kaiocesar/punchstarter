@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, abort
 from flask.ext.sqlalchemy import *
 from flask.ext.migrate import Migrate, MigrateCommand
 from flask.ext.script import Manager
@@ -45,3 +45,13 @@ def create_project():
 		db.session.commit()
 
 		return redirect(url_for('create_project'))
+
+@app.route('/projects/<int:project_id>')		
+def project_detail(project_id):
+	project = db.session.query(Project).get(project_id)
+	if project is None:
+		abort(404)
+
+	return render_template("projects/project_detail.html", project=project)
+
+
